@@ -1,0 +1,45 @@
+@extends('admin.coupons.layout')
+@section('content')
+    <div class="card">
+        <div class="card-header">Add Coupon</div>
+        <div class="card-body">
+
+            <form action="{{ url('admin/coupon') }}" method="post">
+                {!! csrf_field() !!}
+                <label>Coupon Code</label></br>
+                <input type="text" name="coupon_code" id="coupon_code" class="form-control"></br>
+                <label>Description</label></br>
+                <input type="text" name="coupon_text" id="coupon_text" class="form-control"></br>
+
+                <label>Status</label></br>
+                <input type="radio" name="status" value='inactive' id="state_inactive" checked='checked'><label
+                    for='state_inactive'> Inactive</label></br>
+                <input type="radio" name="status" value='active' id="state_active"><label for='state_active'>
+                    Active</label></br></br>
+
+                <label>Date</label></br>
+                <input type="datetime-local" name="date_time" id="date_time" class="form-control"></br>
+
+                {{-- if state is inactive we have to hide coupon --}}
+                <label>Type of Coupon</label></br>
+                <input type="radio" name="discount_type" value='percent' id="type_percent" checked='checked'><label
+                    for='type_percent'>Discount Percentage Amount</label></br>
+                <input type="radio" name="discount_type" value='amount' id="type_amount"><label for='type_amount'>Discount
+                    Amount</label></br></br>
+
+                <label>Discount Amount</label></br>
+                <input type="number" name="discount_amount" id="discount_amount" class="form-control"></br>
+
+                <label>Capacity</label></br>
+                <input type="number" name="capacity" id="capacity" class="form-control"></br>
+
+                <input type="submit" value="Save" class="btn btn-success"></br>
+            </form>
+
+            <a href="{{ url('/admin/coupon') }}" title="Back to coupon">
+                <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Cancel</button>
+            </a>
+
+        </div>
+    </div>
+@stop
